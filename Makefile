@@ -1,6 +1,18 @@
-all: main.c
-	clang -Wall -Wextra -ggdb main.c -lraylib -lm -o infinite_pong
+INCLUDE_PATHS =
+CFLAGS = -Wall -Wextra -ggdb
+CLIBS = -lraylib -lm
+SOURCES = main.c
+CC = clang
+EXECUTABLE = infpong
+
+all: main
+
+main: main.c
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(SOURCES) $(CLIBS)
+
+run: main
+	./$(EXECUTABLE)
 
 clean:
-	rm infinite_pong
+	rm $(EXECUTABLE)
 
